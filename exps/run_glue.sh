@@ -145,13 +145,13 @@ SAVE=checkpoints/glue/${TASK_NAME}/${DATE}/${exp_name}
 echo "${SAVE}"
 rm -rf ${SAVE}; mkdir -p ${SAVE}
 
-rm checkpoints/hf_model/downloads/*.lock
-rm checkpoints/hf_model/*.lock
+rm -f checkpoints/hf_model/downloads/*.lock
+rm -f checkpoints/hf_model/*.lock
 
 
 # python -m torch.distributed.launch --nproc_per_node 2 --master_port=${port} examples/pytorch/text-classification/run_glue.py \
 
-python -u examples/pytorch/text-classification/run_glue.py \
+python3 -u examples/pytorch/text-classification/run_glue.py \
     --model_name_or_path roberta-base \
     --task_name $TASK_NAME \
     --do_train \
